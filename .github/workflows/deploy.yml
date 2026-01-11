@@ -2,21 +2,27 @@ name: Déployer sur O2SWITCH
 
 on:
   push:
-    branches: [ principal ]
+    branches:
+      - main         # si ta branche s'appelle "main"
+      - principal    # ou "principal" – le workflow se déclenchera sur l'une ou l'autre
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Récupérer le code
-        uses: actions/checkout@v3
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
       
-      - name: Déployer via FTP
+      - name: Déployer via FTP sur O2SWITCH
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/devenir-auditeur-qualiopi/
+          server: ${{ secrets.FTP_SERVER }}          # ex : ftp.difo2965.odns.fr
+          username: ${{ secrets.FTP_USERNAME }}      # ex : contact@copilof.fr
+          password: ${{ secrets.FTP_PASSWORD }}      # stocké uniquement en secret
+          protocol: ftps                             # FTPS = FTP chiffré (recommandé)
           port: 21
+          server-dir: public_html/devenir-auditeur-qualiopi/   # ⚠️ SANS "/" au début
+          log-level: standard
+          # local-dir: ./    # par défaut : racine du repo. À décommenter/adapter si ton site est dans un sous-dossier.
+
