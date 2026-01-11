@@ -1199,7 +1199,7 @@
     </footer>
 
     <!-- Fixed Floating Call Button -->
-    <a href="tel:+33631917445" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] flex items-center justify-center gap-3 px-5 py-3 md:px-6 md:py-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 print:hidden border-2 border-white/20 backdrop-blur-sm group">
+    <a href="tel:+33631917445" style="z-index: 9999;" class="fixed bottom-6 right-6 flex items-center justify-center gap-3 px-6 py-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 print:hidden border-2 border-white/20 backdrop-blur-sm group">
         <i data-lucide="phone" class="w-6 h-6 animate-pulse"></i>
         <span class="font-bold text-lg">06 31 91 74 45</span>
     </a>
@@ -1380,4 +1380,21 @@
         }
     </script>
 </body>
-</html>
+</html>`;
+
+// Servir les fichiers statiques (images, etc)
+app.use(express.static(__dirname));
+
+// Route principale : renvoie le HTML directement
+app.get('/', (req, res) => {
+  res.send(htmlContent);
+});
+
+// Fallback pour toutes les routes (SPA behavior)
+app.get('*', (req, res) => {
+  res.send(htmlContent);
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
