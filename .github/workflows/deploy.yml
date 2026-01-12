@@ -1,0 +1,64 @@
+name: Déployer sur O2SWITCH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+      
+      - name: Déployer index.html uniquement
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          server-dir: /public_html/devenir-auditeur-qualiopi/
+          log-level: verbose
+          exclude: |
+            **/*
+            !index.html
+```
+
+4. Message du commit : "Recréation du workflow de déploiement (uniquement index.html)"
+
+5. Cliquez **"Commit changes"**
+
+---
+
+## ✅ Vérification après création :
+
+1. Allez dans l'onglet **"Actions"**
+2. Vous devriez voir un nouveau workflow se lancer automatiquement
+3. Attendez qu'il soit terminé (coche verte ✅)
+4. Vérifiez les logs → devrait indiquer "Uploading: index.html"
+5. Testez votre page : `www.copilof.fr/devenir-auditeur-qualiopi`
+
+---
+
+## 🤔 Pourquoi le workflow a été supprimé ?
+
+Je pense que vous (ou Google AI Studio) avez fait un nettoyage et avez pensé que le workflow n'était plus nécessaire.
+
+**Mais il l'est !** C'est lui qui fait l'automatisation GitHub → O2SWITCH. 🚀
+
+---
+
+## 📊 Récapitulatif de l'architecture :
+```
+Google AI Studio
+    ↓ (Vous générez/modifiez)
+index.html (sur votre ordinateur)
+    ↓ (Vous copiez-collez)
+GitHub (repository)
+    ↓ (Workflow GitHub Actions - À RECRÉER)
+O2SWITCH (FTP)
+    ↓
+www.copilof.fr/devenir-auditeur-qualiopi
