@@ -257,16 +257,6 @@ const htmlContent = `<!DOCTYPE html>
         }
         .print-only { display: none; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "express": "https://esm.sh/express@^5.2.1",
-    "path": "https://esm.sh/path@^0.12.7",
-    "url": "https://esm.sh/url@^0.11.4",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
 </head>
 <body class="bg-brand-50 text-slate-900 font-sans antialiased">
 
@@ -1210,7 +1200,7 @@ const htmlContent = `<!DOCTYPE html>
     </footer>
 
     <!-- Fixed Floating Call Button -->
-    <a href="tel:+33631917445" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] flex items-center justify-center gap-3 px-5 py-3 md:px-6 md:py-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 print:hidden border-2 border-white/20 backdrop-blur-sm group">
+    <a href="tel:+33631917445" style="z-index: 9999;" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 flex items-center justify-center gap-3 px-5 py-3 md:px-6 md:py-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 print:hidden border-2 border-white/20 backdrop-blur-sm group">
         <i data-lucide="phone" class="w-6 h-6 animate-pulse"></i>
         <span class="font-bold text-lg">06 31 91 74 45</span>
     </a>
