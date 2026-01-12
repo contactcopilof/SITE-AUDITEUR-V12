@@ -619,11 +619,11 @@ const htmlContent = `<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <div class="mt-12 text-center">
-                        <button onclick="window.print()" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-accent-600 border border-transparent rounded-full hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 shadow-md hover:shadow-lg gap-2">
+                    <div class="mt-12 flex justify-center w-full">
+                        <a href="Programme-Formation-Qualiopi-CopilOF.pdf" download="Programme-Formation-Qualiopi-CopilOF.pdf" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all shadow-lg gap-2">
                             <i data-lucide="download" class="w-5 h-5"></i>
-                            Télécharger le programme (PDF)
-                        </button>
+                            <span>TÉLÉCHARGER LE PROGRAMME (PDF)</span>
+                        </a>
                     </div>
                 </div>
             </section>
